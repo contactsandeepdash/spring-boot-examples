@@ -1,1 +1,21 @@
+server:
+  port: 7010
 
+
+info:
+  app:
+    name: employee-service
+    description: This service is related to employee-service
+    version: '@project.version@'
+    spring-boot-version: '@project.parent.version@'
+    
+management:
+  info:
+    env:
+      enabled: true
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure:
+        include: '*'
+        # include: configprops,env,health,headdump,info,jolokia,logfile,loggers,metrics,prometheus,refresh,scheduledtasks,sessions,shutdown,status,threaddump
