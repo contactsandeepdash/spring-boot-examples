@@ -1,0 +1,14 @@
+
+# mvn spring-boot:build-image
+# docker run -p7010:7010 employee-service
+# docker image push contactsandeepdash/employee-service
+# http://localhost:7010/api/v1/getEmployeeList
+
+# https://www.baeldung.com/dockerizing-spring-boot-application#:~:text=Dockerize%20a%20Standalone%20Spring%20Boot%20Application&text=This%20file%20contains%20the%20following,jar%20file%20into%20the%20image.
+
+
+FROM openjdk:19-jdk-slim
+VOLUME /tmp
+EXPOSE 7010
+ADD target/*.jar employee-service.jar
+ENTRYPOINT [ "sh", "-c", "java -jar /employee-service.jar" ]
