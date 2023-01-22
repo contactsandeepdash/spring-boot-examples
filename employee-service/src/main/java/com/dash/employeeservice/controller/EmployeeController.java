@@ -37,9 +37,9 @@ public class EmployeeController {
     }
 
     @PutMapping("/employees/{id}")
-    public ResponseEntity<EmployeeModel> updateEmployee(@PathVariable(value = "id") Long employeeId,
+    public ResponseEntity<EmployeeModel> updateEmployee(@PathVariable(value = "id") Long id,
             @Validated @RequestBody EmployeeModel employeeDetails) throws ResourceNotFoundException {
-        return employeeService.updateEmployee(employeeId, employeeDetails);
+        return employeeService.updateEmployee(id, employeeDetails);
     }
 
     @GetMapping("/findAllEmployees")
@@ -47,16 +47,16 @@ public class EmployeeController {
         return employeeService.getAllEmployees();
     }
 
-    @GetMapping("/employees/{empId}")
-    public ResponseEntity<EmployeeModel> getEmployeeById(@PathVariable(value = "empId") Long employeeId)
+    @GetMapping("/employees/{id}")
+    public ResponseEntity<EmployeeModel> getEmployeeById(@PathVariable(value = "id") Long id)
             throws ResourceNotFoundException {
-        return employeeService.getEmployeeById(employeeId);
+        return employeeService.getEmployeeById(id);
     }
 
-    @DeleteMapping("/employees/{empId}")
-    public Map<EmployeeModel, String> deleteEmployeeById(@PathVariable(value = "empId") Long employeeId)
+    @DeleteMapping("/employees/{id}")
+    public Map<EmployeeModel, String> deleteEmployeeById(@PathVariable(value = "id") Long id)
             throws ResourceNotFoundException {
-        return employeeService.deleteEmployee(employeeId);
+        return employeeService.deleteEmployee(id);
     }
 
 }

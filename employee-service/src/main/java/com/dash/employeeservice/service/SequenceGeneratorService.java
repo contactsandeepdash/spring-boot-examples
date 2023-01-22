@@ -11,7 +11,7 @@ import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 
-import com.dash.employeeservice.model.DatabaseSequence;
+import com.dash.employeeservice.model.EmployeeDatabaseSequence;
 
 @Service
 public class SequenceGeneratorService {
@@ -20,9 +20,9 @@ public class SequenceGeneratorService {
     private MongoOperations mongoOperations;
 
     public long generateSequence(String seqName) {
-        DatabaseSequence counter = mongoOperations.findAndModify(query(where("_id").is(seqName)),
+        EmployeeDatabaseSequence counter = mongoOperations.findAndModify(query(where("_id").is(seqName)),
                 new Update().inc("seq", 1), options().returnNew(true).upsert(true),
-                DatabaseSequence.class);
+                EmployeeDatabaseSequence.class);
         return !Objects.isNull(counter) ? counter.getSeq() : 1;
 
     }

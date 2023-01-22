@@ -5,6 +5,7 @@ spring:
   data:
     mongodb:
       uri: mongodb://localhost:27017
+      # uri: mongodb+srv://dashdb:MyDB2023@cluster0.3r3zclg.mongodb.net/?retryWrites=true&w=majority
       database: employee-db
 
 info:
