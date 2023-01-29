@@ -11,7 +11,7 @@ import com.dash.camemicroseriveconsumer.bean.CurrencyExchange;
 
 import lombok.extern.slf4j.Slf4j;
 
-@Component
+// @Component
 public class KafkaReceiverJSONRouter extends RouteBuilder{
 
     @Autowired
