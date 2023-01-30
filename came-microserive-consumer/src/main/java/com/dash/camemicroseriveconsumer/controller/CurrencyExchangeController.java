@@ -17,6 +17,6 @@ public class CurrencyExchangeController {
             @PathVariable String from,
             @PathVariable String to) {
 
-        return new CurrencyExchange(10000L, "USD", "INR", BigDecimal.TEN);
+        return new CurrencyExchange(10000L, from, to, BigDecimal.TEN);
     }
 }

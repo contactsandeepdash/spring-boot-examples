@@ -26,13 +26,13 @@ public class MyRoute extends RouteBuilder {
         // .log("${body}")
         // .transform().constant("current time is " + LocalDateTime.now())
         // .bean("getCurrentTimeBean")
-        .bean(currentTimeBean)
-        .log("${body}")
+        // .bean(currentTimeBean)
+        // .log("${body}")
 
-        .bean(simpleLoggingProcessingComponent)
-        .log("${body}")
+        // .bean(simpleLoggingProcessingComponent)
+        // .log("${body}")
 
-        .process(new SimpleLoggingProcessor())
+        // .process(new SimpleLoggingProcessor())
         .log("${body}")
 
         // processing - does not change the body of the message

@@ -14,7 +14,8 @@
 	<name>came-microserive-consumer</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
-		<java.version>11</java.version><camel.version>3.20.1</camel.version>
+		<java.version>17</java.version>
+        <camel.version>3.20.1</camel.version>
     </properties>
     <dependencies>
         <dependency>

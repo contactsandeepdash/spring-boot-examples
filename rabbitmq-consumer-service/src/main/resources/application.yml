@@ -31,6 +31,6 @@ spring:
     
 
 rabbitmq:
-  queueName: spring_boot
+  queueName: spring_boot_queue
   exchangeName: spring_boot_exchange
   routingKey: spring_boot_routing_key
