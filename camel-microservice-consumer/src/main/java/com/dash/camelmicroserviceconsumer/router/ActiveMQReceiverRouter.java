@@ -1,4 +1,4 @@
-package com.dash.camemicroseriveconsumer.router;
+package com.dash.camelmicroserviceconsumer.router;
 
 import org.apache.camel.builder.RouteBuilder;
 import org.springframework.beans.factory.annotation.Autowired;

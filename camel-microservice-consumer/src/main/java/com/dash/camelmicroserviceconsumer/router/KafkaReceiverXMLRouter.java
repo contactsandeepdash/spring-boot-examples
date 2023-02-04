@@ -1,4 +1,4 @@
-package com.dash.camemicroseriveconsumer.router;
+package com.dash.camelmicroserviceconsumer.router;
 
 import java.math.BigDecimal;
 
@@ -6,12 +6,12 @@ import org.apache.camel.builder.RouteBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.dash.camemicroseriveconsumer.bean.CurrencyExchange;
+import com.dash.camelmicroserviceconsumer.bean.CurrencyExchange;
 
 import lombok.extern.slf4j.Slf4j;
 
 // @Component
-public class ActiveMQReceiverXMLRouter extends RouteBuilder{
+public class KafkaReceiverXMLRouter extends RouteBuilder{
 
     @Autowired
     MycurrencyExchangeProcessor mycurrencyExchangeProcessor;
@@ -25,12 +25,12 @@ public class ActiveMQReceiverXMLRouter extends RouteBuilder{
         log.info("File = {}", getClass().getName());
 
         // read the JSON message from the queue and unmarshall to JSON
-        from("activemq:spring_boot_activemq_queue")
+        from("kafka:my-xml-kafka-topic")
         .unmarshal().jacksonXml(CurrencyExchange.class)
-        .bean(mycurrencyExchangeProcessor)
-        .bean(mycurrencyExchangeTransformer)
         .log("${body}")
-        .to("log:received message from active mq");
+        // .bean(mycurrencyExchangeProcessor)
+        // .bean(mycurrencyExchangeTransformer)
+        .to("log:received message from my-xml-kafka-topic");
         
     }
 }
@@ -39,7 +39,7 @@ public class ActiveMQReceiverXMLRouter extends RouteBuilder{
 @Slf4j
 class MycurrencyExchangeProcessor {
     public void processMessage(CurrencyExchange currencyExchange) {
-        log.info("id = {}, from = {}, to = {}, conversionMultiple = {}", currencyExchange.getId(),
+        log.info("File = {}, id = {}, from = {}, to = {}, conversionMultiple = {}", getClass().getName(), currencyExchange.getId(),
                 currencyExchange.getFrom(), currencyExchange.getTo(), currencyExchange.getConversionMultiple());
     }
 }
@@ -50,9 +50,10 @@ class MycurrencyExchangeTransformer {
     public CurrencyExchange processMessage(CurrencyExchange currencyExchange) {
         currencyExchange.setConversionMultiple(currencyExchange.getConversionMultiple().multiply(BigDecimal.TEN));
 
-        log.info("id = {}, from = {}, to = {}, conversionMultiple = {}", currencyExchange.getId(),
+        log.info("File = {}, id = {}, from = {}, to = {}, conversionMultiple = {}", getClass().getName(), currencyExchange.getId(),
                 currencyExchange.getFrom(), currencyExchange.getTo(), currencyExchange.getConversionMultiple());
 
         return currencyExchange;
     }
 }
+

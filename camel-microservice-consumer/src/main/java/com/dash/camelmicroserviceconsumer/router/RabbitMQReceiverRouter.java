@@ -1,4 +1,4 @@
-package com.dash.camemicroseriveconsumer.router;
+package com.dash.camelmicroserviceconsumer.router;
 
 import org.apache.camel.builder.RouteBuilder;
 
@@ -13,5 +13,3 @@ public class RabbitMQReceiverRouter extends RouteBuilder {
     }
 
 }
-
-

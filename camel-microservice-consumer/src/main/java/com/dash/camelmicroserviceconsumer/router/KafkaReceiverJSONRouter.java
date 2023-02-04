@@ -1,4 +1,4 @@
-package com.dash.camemicroseriveconsumer.router;
+package com.dash.camelmicroserviceconsumer.router;
 
 import java.math.BigDecimal;
 
@@ -7,12 +7,12 @@ import org.apache.camel.model.dataformat.JsonLibrary;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.dash.camemicroseriveconsumer.bean.CurrencyExchange;
+import com.dash.camelmicroserviceconsumer.bean.CurrencyExchange;
 
 import lombok.extern.slf4j.Slf4j;
 
 // @Component
-public class KafkaReceiverXMLRouter extends RouteBuilder{
+public class KafkaReceiverJSONRouter extends RouteBuilder{
 
     @Autowired
     MycurrencyExchangeProcessor mycurrencyExchangeProcessor;
@@ -26,12 +26,12 @@ public class KafkaReceiverXMLRouter extends RouteBuilder{
         log.info("File = {}", getClass().getName());
 
         // read the JSON message from the queue and unmarshall to JSON
-        from("kafka:my-xml-kafka-topic")
-        .unmarshal().jacksonXml(CurrencyExchange.class)
+        from("kafka:my-json-kafka-topic")
+        .unmarshal().json(JsonLibrary.Jackson, CurrencyExchange.class)
         .log("${body}")
         // .bean(mycurrencyExchangeProcessor)
         // .bean(mycurrencyExchangeTransformer)
-        .to("log:received message from my-xml-kafka-topic");
+        .to("log:received message from my-json-kafka-topic");
         
     }
 }

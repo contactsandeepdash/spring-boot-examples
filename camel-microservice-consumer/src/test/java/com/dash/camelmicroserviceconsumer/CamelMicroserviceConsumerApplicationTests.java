@@ -1,10 +1,10 @@
-package com.dash.camemicroseriveconsumer;
+package com.dash.camelmicroserviceconsumer;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CameMicroseriveConsumerApplicationTests {
+class CamelMicroserviceConsumerApplicationTests {
 
 	@Test
 	void contextLoads() {

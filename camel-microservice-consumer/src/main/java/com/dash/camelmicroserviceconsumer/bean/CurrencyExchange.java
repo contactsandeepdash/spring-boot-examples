@@ -1,4 +1,4 @@
-package com.dash.camemicroseriveconsumer.bean;
+package com.dash.camelmicroserviceconsumer.bean;
 
 import java.math.BigDecimal;
 
