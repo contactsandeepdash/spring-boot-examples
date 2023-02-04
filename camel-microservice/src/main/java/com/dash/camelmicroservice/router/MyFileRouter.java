@@ -23,12 +23,21 @@ public class MyFileRouter extends RouteBuilder {
             .otherwise()
                 .log("not a XML File")
         .end()
+        .to("direct:log-file-values")
+        .to("file:/Users/sandeepdash/Desktop/target");
+        
+
+        // direct will be used as a function and reusable
+        from("direct:log-file-values")
         .log("${messageHistory} : ${headers.CamelFileAbsolute}")
         .log("${file:absolute.path} : ${file:name} : ${file:name.ext} : ${file:name.noext} : ${file:onlyname} : ${file:onlyname.noext}")
         .log("${file:parent} : ${file:path} : ${file:absolute} : ${file:size} : ${file:modified}")
-        .log("${routeId} : ${camelId} : \n${body}")
-        .to("file:/Users/sandeepdash/Desktop/target");
-        
+        .log("${routeId} : ${camelId} : \n${body}");
+
+
+        // note: in the log below 2 routes will be seen
+        // Started files-input-route (file:///Users/sandeepdash/Desktop/source)
+        // Started route7 (direct://log-file-values)
     }
     
 }
