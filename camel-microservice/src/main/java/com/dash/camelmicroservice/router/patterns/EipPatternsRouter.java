@@ -24,6 +24,13 @@ public class EipPatternsRouter extends RouteBuilder {
     @Override
     public void configure() throws Exception {
 
+        // to get tracing
+        getContext().setTracing(true);
+
+
+        // ensure no messages are lost - configure a dead letter queue
+        errorHandler(deadLetterChannel("activemq:dead-letter-queue"));
+
         // pipeline
         // content based routing - choice()
         // multicast
@@ -91,8 +98,10 @@ public class EipPatternsRouter extends RouteBuilder {
         // //Endpoint2
         // //Endpoint3
 
+        
+
         from("direct:endpoint1")
-        // .wireTap("log:wire-tap") //add
+        .wireTap("log:wire-tap") //additional endpoint along with to... like phone tapping
         // .to("log:directendpoint1");
         .to("{{endpoint-for-logging}}");    // entry made in applicaiton.yml
 
