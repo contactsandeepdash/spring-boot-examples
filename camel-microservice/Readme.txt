@@ -9,3 +9,6 @@ console | admin:admin
 
 after added Kafka, receiver was not starting.
 in MAC, need to add the hostname appeared on log file.
+sudo vi /private/etc/hosts
+add 127.0.0.1 <hostname_appeared_in_the_log>
+

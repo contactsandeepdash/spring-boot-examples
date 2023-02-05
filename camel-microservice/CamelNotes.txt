@@ -1,0 +1,7 @@
+Patterns in Apache Camel
+--------------------------------
+1. pipeline pattern - Default pattern in camel
+2. multicast pattern - message copy pushed to log, mq, kafka, rest etc.
+3. Content based routing - choice is an example
+4. split pattern - 
+

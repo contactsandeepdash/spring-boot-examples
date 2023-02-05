@@ -14,7 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 // https://camel.apache.org/components/3.20.x/languages/simple-language.html
 // https://camel.apache.org/components/3.20.x/index.html
 
-@Component
+// @Component
 public class MyFileRouter extends RouteBuilder {
 
     @Autowired

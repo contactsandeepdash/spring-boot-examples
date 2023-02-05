@@ -11,3 +11,21 @@ camel:
   component:
     kafka:
       brokers: localhost:9092 
+
+endpoint-for-logging:
+  log:directendpoint1
+timePeriod:
+  10000
+
+# if spring-starter-web is not in pom.xml, below 2 lines will help to have the camel-context
+# camel:
+#   springboot:
+#     main-run-controller: true
+#     duration-max-seconds: 3000
+
+# logging
+# logging:
+#   level:
+#     '[org.springframework]': INFO
+#     '[org.apache.camel.spring.boot]': INFO
+#     '[org.apache.camel.impl]': DEBUG
